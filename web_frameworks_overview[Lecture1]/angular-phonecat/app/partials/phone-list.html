@@ -13,16 +13,54 @@
     </div>
     <div class="col-md-10">
       <!--Body content-->
+        <div data-ng-show="totalRecordsCount > 0">
+          <ul class="phones">
+            <li ng-repeat="phone in phones | filter:query | orderBy:orderProp"
+                class="thumbnail phone-listing">
+              <a href="#/phones/{{phone.id}}" class="thumb"><img ng-src="{{phone.imageUrl}}"></a>
+              <a href="#/phones/{{phone.id}}">{{phone.name}}</a>
+              <p>{{phone.snippet}}</p>
+            </li>
+          </ul>
 
-      <ul class="phones">
-        <li ng-repeat="phone in phones | filter:query | orderBy:orderProp"
-            class="thumbnail phone-listing">
-          <a href="#/phones/{{phone.id}}" class="thumb"><img ng-src="{{phone.imageUrl}}"></a>
-          <a href="#/phones/{{phone.id}}">{{phone.name}}</a>
-          <p>{{phone.snippet}}</p>
-        </li>
-      </ul>
+            <div>
+                <div data-pagination="" data-previous-text="<" data-next-text=">" data-first-text="<<" data-last-text=">>"
+                     data-on-select-page="pageChanged(page)" data-total-items="totalRecordsCount" data-page="currentPage"
+                     data-boundary-links="true" class="pagination pagination-sm" data-max-size="5" data-rotate="false" data-items-per-page="5">
+                </div>
+            </div>
 
+        </div>
+
+        <!--<div class="row">-->
+
+        <!--    <div class="col-md-offset-2 col-md-8 col-md-offset-2 text-center">
+                <div data-ng-show="totalRecordsCount > 0">-->
+            <!--        <div>
+                        <div data-pagination="" data-previous-text="<" data-next-text=">" data-first-text="<<" data-last-text=">>"
+                             data-on-select-page="pageChanged(page)" data-total-items="totalRecordsCount" data-page="currentPage"
+                             data-boundary-links="true" class="pagination pagination-sm" data-max-size="5" data-rotate="false" data-items-per-page="10">
+                        </div>
+                    </div>-->
+             <!--   </div>
+            </div>-->
+
+        <!--</div>-->
     </div>
   </div>
+
+<!--    <div class="row">
+        Hallo
+        <div class="col-md-offset-2 col-md-8 col-md-offset-2 text-center">
+           <div data-ng-show="totalRecordsCount > 0">
+                <div>
+                    <div data-pagination="" data-previous-text="<" data-next-text=">" data-first-text="<<" data-last-text=">>"
+                         data-on-select-page="pageChanged(page)" data-total-items="totalRecordsCount" data-page="currentPage"
+                         data-boundary-links="true" class="pagination pagination-sm" data-max-size="5" data-rotate="false" data-items-per-page="10">
+                    </div>
+                </div>
+          </div>
+        </div>
+
+    </div>-->
 </div>
