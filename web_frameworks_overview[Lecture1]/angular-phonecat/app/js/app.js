@@ -3,12 +3,12 @@
 /* App Module */
 
 var phonecatApp = angular.module('phonecatApp', [
-  'ngRoute',
-  'phonecatAnimations',
+    'ngRoute',
+    'phonecatAnimations',
 
-  'phonecatControllers',
-  'phonecatFilters',
-  'phonecatServices',
+    'phonecatControllers',
+    'phonecatFilters',
+    'phonecatServices',
     'ui.bootstrap'
 ]);
 

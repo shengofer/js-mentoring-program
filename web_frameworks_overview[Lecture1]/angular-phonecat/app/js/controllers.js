@@ -4,12 +4,13 @@
 
 var phonecatControllers = angular.module('phonecatControllers', []);
 
-phonecatControllers.controller('PhoneListCtrl', ['$scope', 'Phone',
-  function($scope, Phone) {
+phonecatControllers.controller('PhoneListCtrl', ['$scope', 'Phone','localStorageService',
+  function($scope, Phone, localStorageService) {
       //paging
       $scope.totalRecordsCount = 0;
       $scope.pageSize = 5;
       $scope.currentPage = 1;
+      $scope.lastPhones = localStorageService.getItem('phone');
 
       init();
       function init(){
@@ -23,8 +24,6 @@ phonecatControllers.controller('PhoneListCtrl', ['$scope', 'Phone',
               $scope.phones = phones;
               $scope.totalRecordsCount =  res.length;
           });
-
-          //$scope.phones = Phone.query();
       };
 
       $scope.pageChanged = function (page) {
@@ -35,13 +34,36 @@ phonecatControllers.controller('PhoneListCtrl', ['$scope', 'Phone',
       $scope.orderProp = 'age';
   }]);
 
-phonecatControllers.controller('PhoneDetailCtrl', ['$scope', '$routeParams', 'Phone',
-  function($scope, $routeParams, Phone) {
-    $scope.phone = Phone.get({phoneId: $routeParams.phoneId}, function(phone) {
-      $scope.mainImageUrl = phone.images[0];
-    });
+phonecatControllers.controller('PhoneDetailCtrl', ['$scope', '$routeParams', 'Phone','localStorageService',
+    function($scope, $routeParams, Phone, localStorageService) {
+        var phone = Phone.get({phoneId: $routeParams.phoneId}, function(phone) {
+            $scope.mainImageUrl = phone.images[0];
+            addLastPhone(phone);
+        });
 
-    $scope.setImage = function(imageUrl) {
-      $scope.mainImageUrl = imageUrl;
-    }
-  }]);
+        $scope.phone = phone;
+
+        $scope.setImage = function(imageUrl) {
+            $scope.mainImageUrl = imageUrl;
+        }
+
+        function addLastPhone(phone){
+            if(localStorageService.isKey('phone')){
+                var lastPhone = localStorageService.getItem('phone');
+                if(lastPhone.length > 5){
+                    lastPhone.pop();
+                }
+                lastPhone.unshift(phone);
+                localStorageService.submit('phone',lastPhone);
+            }
+            else {
+                var lastPhone = [];
+                lastPhone.unshift(phone);
+                localStorageService.submit('phone',lastPhone)
+            }
+
+        };
+
+    }]);
+
+
