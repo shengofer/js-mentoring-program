@@ -11,12 +11,11 @@
       </select>
 
 
-        <ul style="margin-top: 20px;" class="phones">
-            <li style="display: table-row; border: 1px solid black;" ng-repeat="phone in lastPhones"
+        <ul  class="phones">
+            <li  ng-repeat="phone in lastPhones"
                 class="thumbnail phone-listing">
                 <a href="#/phones/{{phone.id}}" class="thumb"><img ng-src="{{phone.images[0]}}"></a>
                 <a href="#/phones/{{phone.id}}">{{phone.name}}</a>
-            <!--    <p>{{phone.snippet}}</p>-->
             </li>
         </ul>
 
@@ -39,41 +38,13 @@
             <div>
                 <div data-pagination="" data-previous-text="<" data-next-text=">" data-first-text="<<" data-last-text=">>"
                      data-on-select-page="pageChanged(page)" data-total-items="totalRecordsCount" data-page="currentPage"
-                     data-boundary-links="true" class="pagination pagination-sm" data-max-size="5" data-rotate="false" data-items-per-page="5">
+                     data-boundary-links="true" class="pagination pagination-sm" data-max-size="5" data-rotate="false" data-items-per-page="pageSize">
                 </div>
             </div>
 
         </div>
 
-        <!--<div class="row">-->
-
-        <!--    <div class="col-md-offset-2 col-md-8 col-md-offset-2 text-center">
-                <div data-ng-show="totalRecordsCount > 0">-->
-            <!--        <div>
-                        <div data-pagination="" data-previous-text="<" data-next-text=">" data-first-text="<<" data-last-text=">>"
-                             data-on-select-page="pageChanged(page)" data-total-items="totalRecordsCount" data-page="currentPage"
-                             data-boundary-links="true" class="pagination pagination-sm" data-max-size="5" data-rotate="false" data-items-per-page="10">
-                        </div>
-                    </div>-->
-             <!--   </div>
-            </div>-->
-
-        <!--</div>-->
     </div>
   </div>
 
-<!--    <div class="row">
-        Hallo
-        <div class="col-md-offset-2 col-md-8 col-md-offset-2 text-center">
-           <div data-ng-show="totalRecordsCount > 0">
-                <div>
-                    <div data-pagination="" data-previous-text="<" data-next-text=">" data-first-text="<<" data-last-text=">>"
-                         data-on-select-page="pageChanged(page)" data-total-items="totalRecordsCount" data-page="currentPage"
-                         data-boundary-links="true" class="pagination pagination-sm" data-max-size="5" data-rotate="false" data-items-per-page="10">
-                    </div>
-                </div>
-          </div>
-        </div>
-
-    </div>-->
 </div>

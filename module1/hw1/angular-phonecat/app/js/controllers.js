@@ -5,20 +5,21 @@
 var phonecatControllers = angular.module('phonecatControllers', []);
 
 phonecatControllers.controller('PhoneListCtrl', ['$scope', 'Phone','localStorageService',
-  function($scope, Phone, localStorageService) {
+  function($scope, Phone, localStorageService,LATEST_PHONES) {
       //paging
       $scope.totalRecordsCount = 0;
       $scope.pageSize = 5;
       $scope.currentPage = 1;
-      $scope.lastPhones = localStorageService.getItem('phone');
+      $scope.lastPhones = localStorageService.getItem(LATEST_PHONES);
 
       init();
       function init(){
-          getPhones($scope.pageSize, $scope.currentPage);
-          var a = "qwe";
+          getPhones();
       }
 
-      function getPhones(sizePage, currPage){
+      function getPhones(){
+          var sizePage = $scope.pageSize;
+          var currPage = $scope.currentPage;
           Phone.query({},function(res){
               var phones = res.slice(((currPage-1) * sizePage ), (currPage * sizePage));
               $scope.phones = phones;
@@ -34,35 +35,19 @@ phonecatControllers.controller('PhoneListCtrl', ['$scope', 'Phone','localStorage
       $scope.orderProp = 'age';
   }]);
 
-phonecatControllers.controller('PhoneDetailCtrl', ['$scope', '$routeParams', 'Phone','localStorageService',
-    function($scope, $routeParams, Phone, localStorageService) {
+phonecatControllers.controller('PhoneDetailCtrl', ['$scope', '$routeParams', 'Phone','latestPhoneService',
+    function($scope, $routeParams, Phone, latestPhoneService, LATEST_PHONES) {
         var phone = Phone.get({phoneId: $routeParams.phoneId}, function(phone) {
             $scope.mainImageUrl = phone.images[0];
-            addLastPhone(phone);
+            latestPhoneService.addLastPhone(phone);
         });
 
         $scope.phone = phone;
 
         $scope.setImage = function(imageUrl) {
             $scope.mainImageUrl = imageUrl;
-        }
-
-        function addLastPhone(phone){
-            if(localStorageService.isKey('phone')){
-                var lastPhone = localStorageService.getItem('phone');
-                if(lastPhone.length > 5){
-                    lastPhone.pop();
-                }
-                lastPhone.unshift(phone);
-                localStorageService.submit('phone',lastPhone);
-            }
-            else {
-                var lastPhone = [];
-                lastPhone.unshift(phone);
-                localStorageService.submit('phone',lastPhone)
-            }
-
         };
+
 
     }]);
 
