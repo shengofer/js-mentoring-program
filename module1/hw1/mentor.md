@@ -6,3 +6,11 @@ for angular app:
 3. move viewing last phones logic in separate service
 5. create directive for last viewed phones presentation
 4. use angular $window wrapper to work with local storage
+
+[2015-06-15 23:00] DF
+for backbone app:
+1. defect: "Employee list" menu isn't sown as selected when click on it after first page load
+2. defect: employee list is overlapped by menu
+3. remove unused commented code in EmployeeCatalogView
+4. make employee collection fetching without redundant name search term (app.js:87)
+5. why you setting employee catalog page content 2 times? (app.js:93 and app.js:98)
