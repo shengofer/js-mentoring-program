@@ -79,27 +79,30 @@ directory.Router = Backbone.Router.extend({
     },
 
     list: function () {
-        if (!directory.employeeListView) {
+        if (!directory.employeeCatalogView) {
             var employees = new directory.EmployeeCollection();
+            var self = this;
             employees.fetch({
                 reset: true,
                 data: {name: ''},
                 success: function (data) {
-                    directory.employeeListView = new directory.EmployeeListView({
+                    directory.employeeCatalogView = new directory.EmployeeCatalogView({
                         model: data
                     });
-                    directory.employeeListView.render();
+                    directory.employeeCatalogView.render();
+                    self.$content.html(directory.employeeCatalogView.el);
+
                 }
             });
         }
-        this.$content.html(directory.employeeListView.el);
+        this.$content.html(directory.employeeCatalogView.el);
         directory.shellView.selectMenuItem('employee-list');
     }
 
 });
 
 $(document).on("ready", function () {
-    directory.loadTemplates(["HomeView", "ContactView", "ShellView", "EmployeeView", "EmployeeSummaryView", "EmployeeListItemView"],
+    directory.loadTemplates(["HomeView", "ContactView", "ShellView", "EmployeeView", "EmployeeSummaryView", "EmployeeCatalogItemView", "EmployeeListItemView"],
         function () {
             directory.router = new directory.Router();
             Backbone.history.start();
