@@ -27,3 +27,9 @@ for flux-react app:
 [2015-06-15 23:45] PS
 for flux-react app:
 1. fixed
+
+[2015-06-16 00:30] PS
+for backbone app:
+1. fixed
+2. fixed
+3. deleted

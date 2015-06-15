@@ -19,3 +19,7 @@ body {
 .no-reports {
     display: none;
 }
+
+.span12 {
+    padding-top: 20px;
+}

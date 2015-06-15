@@ -4,14 +4,6 @@ directory.EmployeeCatalogView = Backbone.View.extend({
 
     className:'nav nav-list',
 
-    initialize:function () {
- /*       var self = this;
-        this.model.on("reset", this.render, this);
-        this.model.on("add", function (employee) {
-            self.$el.append(new directory.EmployeeCatalogItemView({model:employee}).render().el);
-        });*/
-    },
-
     render:function () {
         this.$el.empty();
         _.each(this.model.models, function (employee) {

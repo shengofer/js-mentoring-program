@@ -79,6 +79,7 @@ directory.Router = Backbone.Router.extend({
     },
 
     list: function () {
+
         if (!directory.employeeCatalogView) {
             var employees = new directory.EmployeeCollection();
             var self = this;
@@ -89,8 +90,9 @@ directory.Router = Backbone.Router.extend({
                     directory.employeeCatalogView = new directory.EmployeeCatalogView({
                         model: data
                     });
-                    directory.employeeCatalogView.render();
-                    //self.$content.html(directory.employeeCatalogView.el);
+                    directory.employeeCatalogView.render().el;
+                    self.$content.html(directory.employeeCatalogView.el);
+                    directory.shellView.selectMenuItem('employee-list');
 
                 }
             });
