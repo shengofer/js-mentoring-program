@@ -20,7 +20,8 @@ var TodoActions = {
   create: function(text) {
     AppDispatcher.dispatch({
       actionType: TodoConstants.TODO_CREATE,
-      text: text
+      text: text,
+        date: new Date()
     });
   },
 
