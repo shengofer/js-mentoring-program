@@ -90,7 +90,7 @@ directory.Router = Backbone.Router.extend({
                         model: data
                     });
                     directory.employeeCatalogView.render();
-                    self.$content.html(directory.employeeCatalogView.el);
+                    //self.$content.html(directory.employeeCatalogView.el);
 
                 }
             });

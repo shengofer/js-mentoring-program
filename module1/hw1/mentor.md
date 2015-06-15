@@ -7,6 +7,11 @@ for angular app:
 5. create directive for last viewed phones presentation
 4. use angular $window wrapper to work with local storage
 
+[2015-06-12 12:00] DF
+for angular app:
+1. done
+3. done
+
 [2015-06-15 23:00] DF
 for backbone app:
 1. defect: "Employee list" menu isn't sown as selected when click on it after first page load
@@ -18,3 +23,7 @@ for backbone app:
 [2015-06-15 23:15] DF
 for flux-react app:
 1. make task date position not to be related on task name length (put in new line?)
+
+[2015-06-15 23:45] PS
+for flux-react app:
+1. fixed
