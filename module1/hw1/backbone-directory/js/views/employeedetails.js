@@ -26,3 +26,13 @@ directory.EmployeeSummaryView = Backbone.View.extend({
     }
 
 });
+/*
+
+directory.EmployeeListView = Backbone.View.extend({
+
+    render: function () {
+
+        $('#reports', this.el).append(new directory.EmployeeListView({model:this.model.reports}).render().el);
+        return this;
+    }
+});*/

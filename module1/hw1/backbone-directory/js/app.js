@@ -4,13 +4,13 @@ var directory = {
 
     models: {},
 
-    loadTemplates: function(views, callback) {
+    loadTemplates: function (views, callback) {
 
         var deferreds = [];
 
-        $.each(views, function(index, view) {
+        $.each(views, function (index, view) {
             if (directory[view]) {
-                deferreds.push($.get('tpl/' + view + '.html', function(data) {
+                deferreds.push($.get('tpl/' + view + '.html', function (data) {
                     directory[view].prototype.template = _.template(data);
                 }, 'html'));
             } else {
@@ -26,9 +26,10 @@ var directory = {
 directory.Router = Backbone.Router.extend({
 
     routes: {
-        "":                 "home",
-        "contact":          "contact",
-        "employees/:id":    "employeeDetails"
+        "": "home",
+        "contact": "contact",
+        "employees/:id": "employeeDetails",
+        "list": "list"
     },
 
     initialize: function () {
@@ -75,6 +76,24 @@ directory.Router = Backbone.Router.extend({
             }
         });
         directory.shellView.selectMenuItem();
+    },
+
+    list: function () {
+        if (!directory.employeeListView) {
+            var employees = new directory.EmployeeCollection();
+            employees.fetch({
+                reset: true,
+                data: {name: ''},
+                success: function (data) {
+                    directory.employeeListView = new directory.EmployeeListView({
+                        model: data
+                    });
+                    directory.employeeListView.render();
+                }
+            });
+        }
+        this.$content.html(directory.employeeListView.el);
+        directory.shellView.selectMenuItem('employee-list');
     }
 
 });
