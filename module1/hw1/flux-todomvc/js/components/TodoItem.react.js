@@ -62,8 +62,10 @@ var TodoItem = React.createClass({
             onChange={this._onToggleComplete}
           />
           <label onDoubleClick={this._onDoubleClick}>
-            {todo.text}
+            {todo.text}            {todo.date.toDateString()}
+
           </label>
+
           <button className="destroy" onClick={this._onDestroyClick} />
         </div>
         {input}

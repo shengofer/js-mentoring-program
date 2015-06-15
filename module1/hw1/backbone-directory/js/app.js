@@ -4,13 +4,13 @@ var directory = {
 
     models: {},
 
-    loadTemplates: function(views, callback) {
+    loadTemplates: function (views, callback) {
 
         var deferreds = [];
 
-        $.each(views, function(index, view) {
+        $.each(views, function (index, view) {
             if (directory[view]) {
-                deferreds.push($.get('tpl/' + view + '.html', function(data) {
+                deferreds.push($.get('tpl/' + view + '.html', function (data) {
                     directory[view].prototype.template = _.template(data);
                 }, 'html'));
             } else {
@@ -26,9 +26,10 @@ var directory = {
 directory.Router = Backbone.Router.extend({
 
     routes: {
-        "":                 "home",
-        "contact":          "contact",
-        "employees/:id":    "employeeDetails"
+        "": "home",
+        "contact": "contact",
+        "employees/:id": "employeeDetails",
+        "list": "list"
     },
 
     initialize: function () {
@@ -75,12 +76,33 @@ directory.Router = Backbone.Router.extend({
             }
         });
         directory.shellView.selectMenuItem();
+    },
+
+    list: function () {
+        if (!directory.employeeCatalogView) {
+            var employees = new directory.EmployeeCollection();
+            var self = this;
+            employees.fetch({
+                reset: true,
+                data: {name: ''},
+                success: function (data) {
+                    directory.employeeCatalogView = new directory.EmployeeCatalogView({
+                        model: data
+                    });
+                    directory.employeeCatalogView.render();
+                    self.$content.html(directory.employeeCatalogView.el);
+
+                }
+            });
+        }
+        this.$content.html(directory.employeeCatalogView.el);
+        directory.shellView.selectMenuItem('employee-list');
     }
 
 });
 
 $(document).on("ready", function () {
-    directory.loadTemplates(["HomeView", "ContactView", "ShellView", "EmployeeView", "EmployeeSummaryView", "EmployeeListItemView"],
+    directory.loadTemplates(["HomeView", "ContactView", "ShellView", "EmployeeView", "EmployeeSummaryView", "EmployeeCatalogItemView", "EmployeeListItemView"],
         function () {
             directory.router = new directory.Router();
             Backbone.history.start();
