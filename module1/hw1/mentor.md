@@ -14,3 +14,7 @@ for backbone app:
 3. remove unused commented code in EmployeeCatalogView
 4. make employee collection fetching without redundant name search term (app.js:87)
 5. why you setting employee catalog page content 2 times? (app.js:93 and app.js:98)
+
+[2015-06-15 23:15] DF
+for flux-react app:
+1. make task date position not to be related on task name length (put in new line?)
