@@ -1,5 +1,5 @@
 {
-  "name": "contact-manager-backbone",
+  "name": "backbone-supply-stock",
   "version": "1.0.0",
   "dependencies": {
     "sass-bootstrap": "~3.0.2",
@@ -8,6 +8,11 @@
     "backbone": "~1.1.0",
     "requirejs": "~2.1.10",
     "requirejs-text": "~2.0.10",
+    "modernizr": "~2.7.1",
+    "handlebars": "~1.3.0",
     "backbone.localstorage": "latest"
+  },
+  "devDependencies": {
+    "bootstrap": "~3.3.5"
   }
 }

@@ -1,6 +1,6 @@
 ## Supply Stock ##
 
-### Sample Application built with Backbone.js a ###
+### Application built with Backbone.js a ###
 Write SPA using Backbone.js with Browserify or Require.js.
 Subject of Application: simple stock with income and outcome of supplies.
 It should consist of:
