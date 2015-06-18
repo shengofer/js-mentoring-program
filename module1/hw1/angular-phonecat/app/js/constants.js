@@ -1,4 +1,4 @@
 'use strict';
 
-var phonecatControllers = angular.module('phonecatApp', []);
-phonecatControllers.constant('LATEST_PHONES', 'latest_phones');
+var phonecatConstant = angular.module('phonecatApp', []);
+phonecatConstant.constant('LATEST_PHONES', 'latest_phones');
