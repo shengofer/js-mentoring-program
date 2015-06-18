@@ -12,20 +12,20 @@ phonecatServices.factory('Phone', ['$resource',
     }]);
 
 
-phonecatServices.factory('localStorageService', [function () {
+phonecatServices.factory('localStorageService', ['$window',function ($window) {
 
     return {
         setItem: function (key, value) {
-            return localStorage.setItem(key, JSON.stringify(value));
+            return $window.localStorage.setItem(key, JSON.stringify(value));
         },
 
         getItem: function (key) {
-            var retrievedData = localStorage.getItem(key);
+            var retrievedData = $window.localStorage.getItem(key);
             var parsedData = JSON.parse(retrievedData);
             return parsedData;
         },
         hasKey: function (key) {
-            return localStorage.getItem(key) !== null;
+            return $window.localStorage.getItem(key) !== null;
         }
     }
 }]);
