@@ -4,8 +4,8 @@ for angular app:
 1. remove unused vars, comments
 2. use promise chain in PhoneListCtrl
 3. move viewing last phones logic in separate service
-5. create directive for last viewed phones presentation
-4. use angular $window wrapper to work with local storage
+4. create directive for last viewed phones presentation
+5. use angular $window wrapper to work with local storage
 
 [2015-06-12 12:00] DF
 for angular app:
@@ -33,3 +33,9 @@ for backbone app:
 1. fixed
 2. fixed
 3. deleted
+
+[2015-06-18 15:44] PS
+for angular app:
+2. getPhones function from PhoneListCtrl now use promise
+4. directive for last viewed phones was created
+5. local storage was changed to $window wrapper
