@@ -1,0 +1,51 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-2">
+      <!--Sidebar content-->
+
+      Search: <input ng-model="query">
+      Sort by:
+      <select ng-model="orderProp">
+        <option value="name">Alphabetical</option>
+        <option value="age">Newest</option>
+      </select>
+
+        <last-phones lastPhones="lastPhones"></last-phones>
+
+ <!--       <ul  class="phones">
+            <li  ng-repeat="phone in lastPhones"
+                class="thumbnail phone-listing">
+                <a href="#/phones/{{phone.id}}" class="thumb"><img ng-src="{{phone.images[0]}}"></a>
+                <a href="#/phones/{{phone.id}}">{{phone.name}}</a>
+            </li>
+        </ul>
+-->
+
+    </div>
+
+
+    <div class="col-md-10">
+      <!--Body content-->
+        <div data-ng-show="totalRecordsCount > 0">
+          <ul class="phones">
+            <li ng-repeat="phone in phones | filter:query | orderBy:orderProp"
+                class="thumbnail phone-listing">
+              <a href="#/phones/{{phone.id}}" class="thumb"><img ng-src="{{phone.imageUrl}}"></a>
+              <a href="#/phones/{{phone.id}}">{{phone.name}}</a>
+              <p>{{phone.snippet}}</p>
+            </li>
+          </ul>
+
+            <div>
+                <div data-pagination="" data-previous-text="<" data-next-text=">" data-first-text="<<" data-last-text=">>"
+                     data-on-select-page="pageChanged(page)" data-total-items="totalRecordsCount" data-page="currentPage"
+                     data-boundary-links="true" class="pagination pagination-sm" data-max-size="5" data-rotate="false" data-items-per-page="pageSize">
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+  </div>
+
+</div>
