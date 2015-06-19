@@ -39,3 +39,11 @@ for angular app:
 2. getPhones function from PhoneListCtrl now use promise
 4. directive for last viewed phones was created
 5. local storage was changed to $window wrapper
+
+[2015-06-15 23:15] DF
+angular app:
+4. you really don't pass lastPhones value to directive (attributes is redundant): use isolated scope in directive (need to be fixed)
+5. ok
+6. by promises chain in PhoneListCtrl I meant usage of "Phone.query({}).$promise.then" but not wrapping the result into promise (need to be fixed)
+7. why you renamed get phones method to "setPhoneToScope"? You've broken your pagination by this. Use refactoring tools of your IDE to do such kind of things and recheck functionality afterwards. Need to be fixed ASAP
+8. please fix all of the remarks which are in metor.md file or at least answer on each of them
