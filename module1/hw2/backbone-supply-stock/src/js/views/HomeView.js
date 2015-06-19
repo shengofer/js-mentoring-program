@@ -3,13 +3,13 @@ define([
     'jquery',
     'underscore',
     'backbone',
-    'text!../../templates/navTemplate.html'
+    'text!../../templates/homeTemplate.html'
 ], function($, _, Backbone,  navTemplate){
 
-    var NavigatorView = Backbone.View.extend({
-        el: $('.header'),
+    var HomeView = Backbone.View.extend({
 
         render: function(){
+            this.$el.empty();
             var compiledTemplate = _.template( navTemplate);
             this.$el.html(compiledTemplate);
             return this;
@@ -17,6 +17,6 @@ define([
 
     });
 
-    return NavigatorView;
+    return HomeView;
 
 });

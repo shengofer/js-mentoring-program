@@ -1,0 +1,57 @@
+<h2 class="page-header text-center">Please, login, dear User!</h2>
+<form role="form" class="form-horizontal contact-form">
+
+    <div class="form-group has-feedback form-group-email">
+        <label class="col-sm-4 control-label">Email address:</label>
+        <div class="col-sm-6">
+            <input type="email" class="form-control contact-email-input" placeholder="email">
+            <small class="help-block"></small>
+        </div>
+    </div>
+
+    <div class="form-group control-group">
+        <label class="col-sm-4 control-label">Password:</label>
+        <div class="col-sm-6">
+            <input class="input-medium form-control" type="password" id="signup-password-input" placeholder="Password" name="user_password"
+                   value="" data-required="true" data-notblank="true" data-rangelength="[5,25]">
+            <span class="help-block"></span>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-sm-offset-4 col-sm-3">
+            <button type="submit" class="btn btn-outline btn-lg btn-block">Login</button>
+        </div>
+    </div>
+</form>
+
+
+
+<!--
+<div class="col-md-5 well well-lg text-center">
+    <h1>Login</h1>
+    <div class="height:50px;">
+        <ul id="login-errors" class="parsley-error-list"></ul>
+    </div>
+
+    <form id="login-form" class="form" data-validate="parsley">
+        <fieldset>
+            <div class="control-group">
+                <div class="controls">
+                    <input type="text" id="login-username-input" name="username" placeholder="Username" value="<%= user.username || '' %>"
+                           data-required="true" data-notblank="true">
+                    <span class="help-block"></span>
+                </div>
+            </div>
+            <div class="control-group mb20">
+                <div class="controls">
+                    <input class="input-medium" type="password" id="login-password-input" placeholder="Password" name="user_password"
+                           value="" data-required="true" data-notblank="true" data-rangelength="[5,25]">
+                    <span class="help-block"></span>
+                </div>
+            </div>
+            <a href="#" id="login-btn" class="btn btn-primary btn-lg" data-bypass>Login</a>
+
+        </fieldset>
+    </form>
+</div>-->

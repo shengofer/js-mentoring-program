@@ -9,9 +9,12 @@ require.config({
 });
 define([
   'backbone',
-  'views/app',
+  'views/AppView',
   'router'
 ], function (Backbone, AppView, Router) {
+    // Just use GET and POST to support all browsers
+    Backbone.emulateHTTP = true;
+
 
     var appView = new AppView();
     var router = new Router({view: appView});
